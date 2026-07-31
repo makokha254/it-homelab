@@ -1,0 +1,185 @@
+SW1#show run
+Building configuration...
+
+Current configuration : 3373 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname SW1
+!
+enable secret 5 $1$mERr$gjNBR1u.Is9z7oaYvbvh//
+!
+!
+!
+ip ssh version 2
+ip domain-name homelab.local
+!
+username admin secret 5 $1$mERr$kku/hiJPh.4Yp8Xor/4kz1
+!
+!
+ip dhcp snooping vlan 1
+no ip dhcp snooping information option
+ip dhcp snooping
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0050.0F80.D525
+!
+interface FastEthernet0/2
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0030.A383.E107
+!
+interface FastEthernet0/3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0006.2A6B.A3A7
+!
+interface FastEthernet0/4
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/5
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/6
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/7
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/8
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/9
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/10
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/11
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/12
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/13
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/14
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/15
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/16
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/17
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/18
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/19
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/20
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/21
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/22
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/23
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/24
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet0/1
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ ip address 192.168.1.2 255.255.255.0
+!
+ip default-gateway 192.168.1.1
+!
+banner motd ^C AUTHORIZED ACCESS ONLY . Unauthorized access is prohibited.^C
+!
+!
+!
+line con 0
+ password 7 080243401A160912325A5E57
+ logging synchronous
+ login
+ exec-timeout 5 0
+!
+line vty 0 4
+ exec-timeout 5 0
+ login local
+ transport input ssh
+line vty 5 15
+ exec-timeout 5 0
+ login local
+ transport input ssh
+!
+!
+!
+!
+end
